@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/dist/output.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <nav style="background-image:linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)) ,   url('../public/nav-bg-image.jpg');"
+        class=" flex flex-col items-center bg-cover bg-center mb-10 h-[20vh] ">
+
+        <div class="flex justify-between h-[100%] items-center w-[90%] max-w-4xl">
+            <h1 class="text-slate-100 text-2xl font-bold ">Find Your Film</h1>
+            <a href="index.html" class="text-slate-100 text-2xl font-bold ">Add More</a>
+        </div>
+    </nav>
+
+     <!-- ====== MOVIE DISPLAY =======  -->
+   
+     <div class="flex justify-center ">
+         <div class="movie--container max-w-4xl flex flex-col gap-10" id="movieWatchlist--container"></div>
+     </div>
+
+
+
+
+     <script src="watchlist.js" type="module"></script>
+</body>
+
+</html>

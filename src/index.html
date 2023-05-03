@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/dist/output.css" rel="stylesheet">
+
+</head>
+
+<body class="h-[100vh]">
+
+    <!-- ====== NAVBAR =======  -->
+
+    <nav style="background-image:linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)) ,   url('../public/nav-bg-image.jpg');"
+        class="h-[40%] flex flex-col items-center bg-cover bg-center mb-10 ">
+
+        <div class="flex justify-between h-[100%] items-center w-[90%] max-w-4xl">
+            <h1 class="text-slate-100 text-2xl font-bold ">Find Your Film</h1>
+            <a href="watchlist.html" class="text-slate-100 text-2xl font-bold ">My watchlist</a>
+
+
+        </div>
+        <div class="relative top-4 flex items-center  bg-[#2E2E2F] rounded-lg pl-2 overflow-hidden">
+            <img src="/public/Search.svg" class="h-5 ml-2" />
+            <input id="input--movie" class="my-2  bg-transparent pl-4 focus:none" type="text" placeholder="Search for movie" />
+            <button id="btn--search" class="text-slate-100 bg-[#4B4B4B] py-2 px-5 text-sm ">Search</button>
+        </div>
+    </nav>
+
+    <!-- ====== MOVIE DISPLAY =======  -->
+<div class="flex justify-center">
+    <div class="grid grid-cols-2 gap-4 w-[80%] grid-rows-auto" id="movie--container">
+        
+
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+    <Script src="index.js" type="module"></Script>
+</body>
+
+</html>

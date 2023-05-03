@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+*{
+    /* border: 1px dotted black; */
+    font-family: 'Inter', sans-serif;
+    color: white;
+      
+}
+
+body{
+    background-color: black;
+}
+
+input:focus{
+    outline: none;
+}
+
+
+/* #movie--container *{
+    border: dotted blue 1px;
+} */
+
+
+#movie--container > *{
+    border: dotted red 1px;
+}
+
+#movie--container > div{
+    border: dotted green 1px;
+}
+
+.borderWhite{
+    border: dotted white 5px;
+}
+
