@@ -571,24 +571,16 @@ video {
   margin-bottom: 0.5rem;
 }
 
-.ml-2{
-  margin-left: 0.5rem;
-}
-
-.mb-5{
-  margin-bottom: 1.25rem;
-}
-
 .mb-10{
   margin-bottom: 2.5rem;
 }
 
-.flex{
-  display: flex;
+.ml-2{
+  margin-left: 0.5rem;
 }
 
-.inline-flex{
-  display: inline-flex;
+.flex{
+  display: flex;
 }
 
 .grid{
@@ -607,36 +599,16 @@ video {
   height: 100vh;
 }
 
-.h-\[20\%\]{
-  height: 20%;
-}
-
-.h-\[40\%\]{
-  height: 40%;
-}
-
-.h-\[50\%\]{
-  height: 50%;
+.h-\[20vh\]{
+  height: 20vh;
 }
 
 .h-\[300px\]{
   height: 300px;
 }
 
-.h-\[500px\]{
-  height: 500px;
-}
-
-.h-\[200px\]{
-  height: 200px;
-}
-
-.h-\[400px\]{
-  height: 400px;
-}
-
-.h-\[20vh\]{
-  height: 20vh;
+.h-\[40\%\]{
+  height: 40%;
 }
 
 .w-\[80\%\]{
@@ -647,32 +619,8 @@ video {
   width: 90%;
 }
 
-.w-\[50\%\]{
-  width: 50%;
-}
-
 .max-w-4xl{
   max-width: 56rem;
-}
-
-.max-w-lg{
-  max-width: 32rem;
-}
-
-.max-w-3xl{
-  max-width: 48rem;
-}
-
-.max-w-5xl{
-  max-width: 64rem;
-}
-
-.auto-rows-max{
-  grid-auto-rows: max-content;
-}
-
-.auto-rows-auto{
-  grid-auto-rows: auto;
 }
 
 .grid-cols-2{
@@ -699,16 +647,12 @@ video {
   justify-content: space-between;
 }
 
-.gap-4{
-  gap: 1rem;
-}
-
-.gap-5{
-  gap: 1.25rem;
-}
-
 .gap-10{
   gap: 2.5rem;
+}
+
+.gap-4{
+  gap: 1rem;
 }
 
 .overflow-hidden{
