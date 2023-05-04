@@ -14,7 +14,12 @@ function renderLocalMovies() {
         moviesHtml.unshift(movie.getHtml())
     }
 
+    if(moviesHtml.length < 1){
+        container.innerHTML = `<h1 class="text-[#787878]">Unable to find what you’re looking for. Please try another search.</h1>`
+    }else{
     container.innerHTML = moviesHtml.join('')
+
+    }
 }
 
 
