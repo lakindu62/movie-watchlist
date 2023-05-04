@@ -34,7 +34,7 @@ async function getMovieId() {
         //   SHOULD BE ADDED AS  INNER HTML
     } else {
 
-       
+       ``
 
         const movieIds = movies.Search.map(movie => {
             return movie.imdbID
