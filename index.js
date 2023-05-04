@@ -19,7 +19,7 @@ async function getMovieId() {
         movieContainer.innerHTML = ` <img class='col-start-1 col-end-3 text-center justify-self-center h-20' id="spinner" src="/public/spinner.svg">  </img>`              //   SHOULD BE ADDED AS  INNER HTML
         document.getElementById('spinner').style.display = "block"
 
-    const response = await fetch(`http://www.omdbapi.com/?apikey=${key}&s=${movieSearchName}`)
+    const response = await fetch(`https://www.omdbapi.com/?apikey=${key}&s=${movieSearchName}`)
         
     const movies = await response.json()
     document.getElementById('spinner').style.display = "none"
@@ -51,7 +51,7 @@ async function getMovie(movieIds) {
     let movieArray = []
     
     for (let movieId of movieIds) {
-        const response = await fetch(`http://www.omdbapi.com/?apikey=${key}&i=${movieId}`)
+        const response = await fetch(`https://www.omdbapi.com/?apikey=${key}&i=${movieId}`)
         const data = await response.json()
         
         const movie= new Movie(data)
