@@ -562,8 +562,28 @@ video {
   position: relative;
 }
 
+.left-0{
+  left: 0px;
+}
+
+.right-0{
+  right: 0px;
+}
+
 .top-4{
   top: 1rem;
+}
+
+.col-start-1{
+  grid-column-start: 1;
+}
+
+.col-end-3{
+  grid-column-end: 3;
+}
+
+.m-auto{
+  margin: auto;
 }
 
 .my-2{
@@ -571,24 +591,36 @@ video {
   margin-bottom: 0.5rem;
 }
 
-.ml-2{
-  margin-left: 0.5rem;
+.mb-10{
+  margin-bottom: 2.5rem;
 }
 
 .mb-5{
   margin-bottom: 1.25rem;
 }
 
-.mb-10{
-  margin-bottom: 2.5rem;
+.ml-10{
+  margin-left: 2.5rem;
+}
+
+.ml-2{
+  margin-left: 0.5rem;
+}
+
+.ml-5{
+  margin-left: 1.25rem;
+}
+
+.mt-10{
+  margin-top: 2.5rem;
+}
+
+.block{
+  display: block;
 }
 
 .flex{
   display: flex;
-}
-
-.inline-flex{
-  display: inline-flex;
 }
 
 .grid{
@@ -607,36 +639,36 @@ video {
   height: 100vh;
 }
 
-.h-\[20\%\]{
-  height: 20%;
-}
-
-.h-\[40\%\]{
-  height: 40%;
-}
-
-.h-\[50\%\]{
-  height: 50%;
+.h-\[20vh\]{
+  height: 20vh;
 }
 
 .h-\[300px\]{
   height: 300px;
 }
 
-.h-\[500px\]{
-  height: 500px;
+.h-\[40\%\]{
+  height: 40%;
 }
 
-.h-\[200px\]{
-  height: 200px;
+.h-\[50vh\]{
+  height: 50vh;
 }
 
-.h-\[400px\]{
-  height: 400px;
+.h-10{
+  height: 2.5rem;
 }
 
-.h-\[20vh\]{
-  height: 20vh;
+.h-20{
+  height: 5rem;
+}
+
+.min-h-\[40vh\]{
+  min-height: 40vh;
+}
+
+.w-\[202px\]{
+  width: 202px;
 }
 
 .w-\[80\%\]{
@@ -647,36 +679,12 @@ video {
   width: 90%;
 }
 
-.w-\[50\%\]{
-  width: 50%;
-}
-
 .max-w-4xl{
   max-width: 56rem;
 }
 
-.max-w-lg{
-  max-width: 32rem;
-}
-
-.max-w-3xl{
-  max-width: 48rem;
-}
-
-.max-w-5xl{
-  max-width: 64rem;
-}
-
-.auto-rows-max{
-  grid-auto-rows: max-content;
-}
-
-.auto-rows-auto{
-  grid-auto-rows: auto;
-}
-
-.grid-cols-2{
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+.grid-cols-1{
+  grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
 .flex-col{
@@ -699,16 +707,20 @@ video {
   justify-content: space-between;
 }
 
+.gap-10{
+  gap: 2.5rem;
+}
+
+.gap-2{
+  gap: 0.5rem;
+}
+
 .gap-4{
   gap: 1rem;
 }
 
-.gap-5{
-  gap: 1.25rem;
-}
-
-.gap-10{
-  gap: 2.5rem;
+.justify-self-center{
+  justify-self: center;
 }
 
 .overflow-hidden{
@@ -745,6 +757,11 @@ video {
   background-position: center;
 }
 
+.object-cover{
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .px-5{
   padding-left: 1.25rem;
   padding-right: 1.25rem;
@@ -763,9 +780,18 @@ video {
   padding-left: 1rem;
 }
 
+.text-center{
+  text-align: center;
+}
+
 .text-2xl{
   font-size: 1.5rem;
   line-height: 2rem;
+}
+
+.text-base{
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 
 .text-sm{
@@ -773,13 +799,38 @@ video {
   line-height: 1.25rem;
 }
 
+.text-4xl{
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
 .font-bold{
   font-weight: 700;
+}
+
+.text-\[\#A5A5A5\]{
+  --tw-text-opacity: 1;
+  color: rgb(165 165 165 / var(--tw-text-opacity));
 }
 
 .text-slate-100{
   --tw-text-opacity: 1;
   color: rgb(241 245 249 / var(--tw-text-opacity));
+}
+
+.text-slate-400{
+  --tw-text-opacity: 1;
+  color: rgb(148 163 184 / var(--tw-text-opacity));
+}
+
+.text-slate-500{
+  --tw-text-opacity: 1;
+  color: rgb(100 116 139 / var(--tw-text-opacity));
+}
+
+.text-slate-600{
+  --tw-text-opacity: 1;
+  color: rgb(71 85 105 / var(--tw-text-opacity));
 }
 
 .filter{
@@ -804,15 +855,11 @@ input:focus{
     border: dotted blue 1px;
 } */
 
-#movie--container > *{
-  border: dotted red 1px;
-}
-
-#movie--container > div{
-  border: dotted green 1px;
-}
-
 .borderWhite{
   border: dotted white 5px;
+}
+
+.movie{
+  font-size: 1.3rem;
 }
 
