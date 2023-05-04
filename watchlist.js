@@ -17,7 +17,7 @@ function renderLocalMovies() {
     if(moviesHtml.length < 1){
         container.innerHTML = ` <div>
                                     <h1 style="color:#413b3b; font-weight:bold;" class="text-[#413b3b]">Your watchlist is looking a little empty...</h1>
-                                    <a style="color:#FFFFFF; display:flex; gap:5px; justify-content:center; "   href=""><img src="/public/add.svg"/> Let’s add some movies!</a>
+                                    <a style="color:#FFFFFF; display:flex; gap:5px; justify-content:center; "   href="index.html"><img src="/public/add.svg"/> Let’s add some movies!</a>
                                 </div>`
     }else{
     container.innerHTML = moviesHtml.join('')
