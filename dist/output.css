@@ -815,6 +815,11 @@ video {
   color: rgb(71 85 105 / var(--tw-text-opacity));
 }
 
+.text-\[\#2E2E2F\]{
+  --tw-text-opacity: 1;
+  color: rgb(46 46 47 / var(--tw-text-opacity));
+}
+
 .filter{
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
