@@ -1,144 +1,101 @@
-import Movie from "./movie";
+import Movie from "./movie.js";
+import { getLocalStorage } from "./utilities.js";
+
 
 const searchBtn = document.getElementById('btn--search')
 const movieInputEl = document.getElementById('input--movie')
 const movieContainer = document.getElementById('movie--container')
 
 
-
 const key = 'af3d11d4';
-let localstorageKey ;
-
-searchBtn.addEventListener('click', getMovieData)
-
-
-async function getMovieData() {
-    const movieName = movieInputEl.value
-
-    const response = await fetch(`http://www.omdbapi.com/?apikey=${key}&s=${movieName}
-    `)
-
-    // console.log(response)
-
-    const data = await response.json()
-
-    if (data.Error === "Incorrect IMDb ID.") {
-        console.log(` please enter a movie name`)               //   SHOULD BE ADDED AS  INNER HTML
-    } else if (data.Error === 'Movie not found!') {
-        console.log('movie not found')                          //   SHOULD BE ADDED AS  INNER HTML
-    } else {
-
-        // console.log(data)
-        const movieIdArray = data.Search.map(movie => {
-            return movie.imdbID
-        })
-
-        getMovie(movieIdArray)
 
 
 
-    }
+searchBtn.addEventListener('click', getMovieId)
 
-}
-
-
-async function getMovie(movieIds) {
-    const movieArray = []
-
-    for (let movieId of movieIds) {
-        const response = await fetch(`http://www.omdbapi.com/?apikey=${key}&i=${movieId}
-    `)
-        const data = await response.json()
-
-        movieArray.push(data)
-    }
+async function getMovieId() {
+    const movieSearchName = movieInputEl.value
     
-    getMovieHtml(movieArray)
-}
+        movieContainer.innerHTML = ` <img class='col-start-1 col-end-3 text-center justify-self-center h-20' id="spinner" src="/public/spinner.svg">  </img>`              //   SHOULD BE ADDED AS  INNER HTML
+        document.getElementById('spinner').style.display = "block"
 
+    const response = await fetch(`http://www.omdbapi.com/?apikey=${key}&s=${movieSearchName}`)
+        
+    const movies = await response.json()
+    document.getElementById('spinner').style.display = "none"
 
-function getMovieHtml(movieArray){
+    console.log(movies)
 
-    const moviesHtml = movieArray.map(movieHtml =>{
-        const {Poster , Title , imdbRating , Runtime , Genre , Plot , imdbID } = movieHtml
+    if (movies.Error === "Incorrect IMDb ID.") {
+        movieContainer.innerHTML = ` <h1 class='col-start-1 col-end-3 text-center text-slate-600 justify-self-center' "> Please Enter a Movie  </h1>`
+    } else if (movies.Error === 'Movie not found!') {
+        movieContainer.innerHTML = ` <h1 class='col-start-1 col-end-3 text-center text-slate-600 justify-self-center' "> No movies Found </h1>`
+        //   SHOULD BE ADDED AS  INNER HTML
+        //   SHOULD BE ADDED AS  INNER HTML
+    } else {
 
        
 
-        return `
-        
-            <div class=" flex items-start  rounded-xl">
-                <img class="h-[300px]" src="${Poster}" />
-                <div class='movieInfo--container'>
-                    <div>
-                        <h1>${Title}</h1>
-                        <span><img src="" /> <p>${imdbRating}</p></span>
-                    </div>
-                    <div>
-                        <span>${Runtime}</span>
-                        <span>${Genre}</span>
-                        <div>
-                            <img src="" />
-                            <button class="btn--watchlist" id="${imdbID}">Watchlist</button>
-                        </div>
-                    
-                    </div>
-                    <span>${Plot}</span>
-                </div>
+        const movieIds = movies.Search.map(movie => {
+            return movie.imdbID
+        })
 
+        getMovie(movieIds)
+        movieContainer.innerHTML = ''   
+    }
 
-            </div>
-
-        `
-    }).join('')
-
-    
-
-    renderMovie(moviesHtml , movieArray)
-    
 }
 
- function renderMovie(moviesHtml , movieArray){
+async function getMovie(movieIds) {
 
+    let movieArray = []
     
+    for (let movieId of movieIds) {
+        const response = await fetch(`http://www.omdbapi.com/?apikey=${key}&i=${movieId}`)
+        const data = await response.json()
+        
+        const movie= new Movie(data)
 
-    movieContainer.innerHTML = moviesHtml
-    
+        for(let localMovie of getLocalStorage()){
+            if(movie.imdbID === localMovie.imdbID ){
+                movie.inLocalStorage = true
+                
+            }
+            
+        }
+        
+        
+        movieContainer.innerHTML += movie.getHtml()
+
+        movieArray.push(movie)
+
+
+
+    }
     transferToLocalStorage(movieArray)
+
+
+}
+
+function transferToLocalStorage(movieArray) {
+    movieContainer.addEventListener('click', addMovie )
+    function addMovie(btn){
+            const oneMovieArray = movieArray.filter(e => btn.target.id === e.imdbID)
+            const movie = oneMovieArray[0]
+            
+            console.log(movie)
+            const localstorageKey = movie.imdbID
+            const data = JSON.stringify(movie)
     
-}
-
-
-
-function transferToLocalStorage(movieArray){
-    
-    
-    movieContainer.addEventListener('click' , btn =>{
-        // e.target.id
-        const oneMovieArray = movieArray.filter(e => btn.target.id === e.imdbID)
-        const movie = oneMovieArray[0]
-        localstorageKey = movie.imdbID
-        const data = JSON.stringify(movie)
-
-        localStorage.setItem(localstorageKey , data)
-
+            localStorage.setItem(localstorageKey, data)
+            document.querySelector(`button[id=${movie.imdbID}]`).innerHTML = "<img src='/public/remove.svg' /> Remove" 
         
-        
-        addToWatchlist(localstorageKey)
-    })
+    }
 }
 
 
-export function addToWatchlist(key){
-        const retrievedData = JSON.parse(localStorage.getItem(key))
-
-        const {Poster , Title , imdbRating , Runtime , Genre , Plot , imdbID } = retrievedData
-
-        
-        return localstorageKey
-
-}
 
 
-function exportKey(){
 
-}
+
+

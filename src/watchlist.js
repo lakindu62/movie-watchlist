@@ -1,66 +1,20 @@
-// import {addToWatchlist} from './index.js'
+import Movie from "./movie.js";
 
-let movies = []
-for (let i = 0; i < localStorage.length; i++) {
-    const movie = JSON.parse(localStorage.getItem(localStorage.key(i)));
-    // Do something with the movie object, e.g., render it to the DOM
-    movies.push(movie);
-}
+const container = document.getElementById('movieWatchlist--container')
 
-console.log(movies)
+let movies = []    //needed for function renderLocalMovies
 
-
-
-
-function getMoviewatchlistHtml() {
-    movies = []
+function renderLocalMovies() {
+    let moviesHtml = []
     for (let i = 0; i < localStorage.length; i++) {
-        const movie = JSON.parse(localStorage.getItem(localStorage.key(i)));
-        // Do something with the movie object, e.g., render it to the DOM
-        movies.push(movie);
+        const movieData = JSON.parse(localStorage.getItem(localStorage.key(i)));
+
+        const movie = new Movie(movieData, true)
+        movies.push(movie)
+        moviesHtml.unshift(movie.getHtml())
     }
 
-    const movieHtml = movies.reverse().map(movie => {
-
-
-        const { Poster, Title, imdbRating, Runtime, Genre, Plot, imdbID } = movie
-
-
-
-        return `    <div class=" flex items-start  rounded-xl">
-                        <img class="h-[300px]" src="${Poster}" />
-                        <div class='movieInfo--container px-5'>
-                            <div class="flex justify-between">
-                                <h1>${Title}</h1>
-                                <span><img src="" /> <p>${imdbRating}</p></span>
-                            </div>
-                            <div>
-                                <span>${Runtime}</span>
-                                <span>${Genre}</span>
-                                <div>
-                                    <img src="" />
-                                    <button id="${imdbID}">remove</button>
-                                </div>
-                            
-                            </div>
-                            <span>${Plot}</span>
-                        </div>
-                    </div>`
-    }).join('')
-
-    renderMovies(movieHtml)
-}
-
-function renderMovies(html){
-    const container = document.getElementById('movieWatchlist--container')
-    container.innerHTML = html
-
-
-    container.addEventListener('click', btn =>{
-        console.log(btn.target.id)
-        localStorage.removeItem(btn.target.id)
-        getMoviewatchlistHtml()
-    })
+    container.innerHTML = moviesHtml.join('')
 }
 
 
@@ -68,5 +22,15 @@ function renderMovies(html){
 
 
 
+container.addEventListener("click", removeItem)
 
-getMoviewatchlistHtml()
+
+function removeItem(btn) {
+    const movie = movies.filter(e => btn.target.id === e.imdbID)
+    localStorage.removeItem(`${movie[0].imdbID}`)
+    renderLocalMovies()
+}
+
+
+
+renderLocalMovies()
