@@ -21,8 +21,13 @@ async function getMovieId() {
 
     const response = await fetch(`https://www.omdbapi.com/?apikey=${key}&s=${movieSearchName}`)
         
-    const movies = await response.json()
-    document.getElementById('spinner').style.display = "none"
+    const movies = await response.json() 
+    setTimeout(()=>{
+    (document.getElementById('spinner').style.display = "none")
+
+    },10000)
+
+
 
     console.log(movies)
 
@@ -41,7 +46,7 @@ async function getMovieId() {
         })
 
         getMovie(movieIds)
-        movieContainer.innerHTML = ''   
+           
     }
 
 }
@@ -49,6 +54,7 @@ async function getMovieId() {
 async function getMovie(movieIds) {
 
     let movieArray = []
+    let movieHtmlArray = []
     
     for (let movieId of movieIds) {
         const response = await fetch(`https://www.omdbapi.com/?apikey=${key}&i=${movieId}`)
@@ -65,13 +71,16 @@ async function getMovie(movieIds) {
         }
         
         
-        movieContainer.innerHTML += movie.getHtml()
+        movieHtmlArray.push(movie.getHtml())
 
         movieArray.push(movie)
 
 
 
     }
+
+    movieContainer.innerHTML = movieHtmlArray.join('')
+
     transferToLocalStorage(movieArray)
 
 
